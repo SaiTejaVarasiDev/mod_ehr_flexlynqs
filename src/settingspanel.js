@@ -55,19 +55,19 @@ const handleSettingsClick = async () => {
     toggleSkeletonLoader("settingsForm", "add");
     xhr.open("GET", `${BASE_URL}/api/settings/`);
     // // xhr.setRequestHeader("Authorization", accessToken);
-    // xhr.setRequestHeader("Authorization", idToken);
+    xhr.setRequestHeader("Authorization", idToken);
     xhr.onreadystatechange = async function () {
-    //   if (xhr.readyState === XMLHttpRequest.DONE) {
-    //     if (xhr.status === 200) {
-    //       let settings_records = JSON.parse(xhr.responseText);
-    //       settingsDataStatus = true;
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
+          let settings_records = JSON.parse(xhr.responseText);
+          settingsDataStatus = true;
           toggleSkeletonLoader("settingsForm", "remove");
-    //       for (let settings of settings_records) {
-    //         $(`#${settings.name}`).val(settings.value);
-    //         $(`#${settings.name}_text`).text(settings.value);
-    //       }
-    //     }
-    //   }
+          for (let settings of settings_records) {
+            $(`#${settings.name}`).val(settings.value);
+            $(`#${settings.name}_text`).text(settings.value);
+          }
+        }
+      }
     };
   } else {
     settingsDataStatus = false;
