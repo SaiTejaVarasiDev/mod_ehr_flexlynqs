@@ -50,14 +50,17 @@ const handleInputChange = async () => {
 };
 
 const handleSettingsClick = async () => {
+  console.log("line53");
   toggler("settingsToggler", "settingsModal");
   if (settingsDataStatus === false) {
+    console.log("line56");
     toggleSkeletonLoader("settingsForm", "add");
     xhr.open("GET", `${BASE_URL}/api/settings/`);
     // xhr.setRequestHeader("Authorization", accessToken);
     xhr.setRequestHeader("Authorization", idToken);
     xhr.onreadystatechange = async function () {
       if (xhr.readyState === XMLHttpRequest.DONE) {
+        console.log("line63"+xhr);
         if (xhr.status === 200) {
           let settings_records = JSON.parse(xhr.responseText);
           settingsDataStatus = true;
@@ -70,6 +73,7 @@ const handleSettingsClick = async () => {
       }
     };
   } else {
+    console.log("line75");
     settingsDataStatus = false;
   }
   xhr.send();
