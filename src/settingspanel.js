@@ -53,10 +53,10 @@ const handleSettingsClick = async () => {
   toggler("settingsToggler", "settingsModal");
   if (settingsDataStatus === false) {
     toggleSkeletonLoader("settingsForm", "add");
-    // xhr.open("GET", `${BASE_URL}/api/settings/`);
+    xhr.open("GET", `${BASE_URL}/api/settings/`);
     // // xhr.setRequestHeader("Authorization", accessToken);
     // xhr.setRequestHeader("Authorization", idToken);
-    // xhr.onreadystatechange = async function () {
+    xhr.onreadystatechange = async function () {
     //   if (xhr.readyState === XMLHttpRequest.DONE) {
     //     if (xhr.status === 200) {
     //       let settings_records = JSON.parse(xhr.responseText);
@@ -68,12 +68,12 @@ const handleSettingsClick = async () => {
     //       }
     //     }
     //   }
-    // };
+    };
   } else {
     settingsDataStatus = false;
   }
   console.log("send before")
-  // xhr.send();
+  xhr.send();
   console.log("send after")
   
 };
