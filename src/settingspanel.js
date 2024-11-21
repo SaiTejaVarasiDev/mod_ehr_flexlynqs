@@ -60,7 +60,9 @@ const handleSettingsClick = async () => {
     xhr.setRequestHeader("Authorization", idToken);
     xhr.onreadystatechange = async function () {
       if (xhr.readyState === XMLHttpRequest.DONE) {
-        console.log("line63"+xhr);
+        console.log("line63"+JSON.stringify(xhr));
+        console.log("status->"+xhr.status);
+        console.log("response->"+JSON.parse(xhr.responseText))
         if (xhr.status === 200) {
           let settings_records = JSON.parse(xhr.responseText);
           settingsDataStatus = true;
@@ -77,6 +79,7 @@ const handleSettingsClick = async () => {
     settingsDataStatus = false;
   }
   xhr.send();
+  
 };
 
 const handleFormSubmit = async () => {
