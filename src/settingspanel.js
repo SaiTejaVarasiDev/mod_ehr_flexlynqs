@@ -78,7 +78,9 @@ const handleSettingsClick = async () => {
     console.log("line75");
     settingsDataStatus = false;
   }
+  console.log("send before")
   xhr.send();
+  console.log("send after")
   
 };
 
