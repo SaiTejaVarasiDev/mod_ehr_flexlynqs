@@ -50,37 +50,32 @@ const handleInputChange = async () => {
 };
 
 const handleSettingsClick = async () => {
-  console.log("line53");
   toggler("settingsToggler", "settingsModal");
-  if (settingsDataStatus === false) {
-    console.log("line56");
-    toggleSkeletonLoader("settingsForm", "add");
-    xhr.open("GET", `${BASE_URL}/api/settings/`);
-    // xhr.setRequestHeader("Authorization", accessToken);
-    xhr.setRequestHeader("Authorization", idToken);
-    xhr.onreadystatechange = async function () {
-      if (xhr.readyState === XMLHttpRequest.DONE) {
-        console.log("line63"+JSON.stringify(xhr));
-        console.log("status->"+xhr.status);
-        console.log("response->"+JSON.parse(xhr.responseText))
-        if (xhr.status === 200) {
-          let settings_records = JSON.parse(xhr.responseText);
-          settingsDataStatus = true;
-          toggleSkeletonLoader("settingsForm", "remove");
-          for (let settings of settings_records) {
-            $(`#${settings.name}`).val(settings.value);
-            $(`#${settings.name}_text`).text(settings.value);
-          }
-        }
-      }
-    };
-  } else {
-    console.log("line75");
-    settingsDataStatus = false;
-  }
-  console.log("send before")
-  xhr.send();
-  console.log("send after")
+  // if (settingsDataStatus === false) {
+  //   toggleSkeletonLoader("settingsForm", "add");
+  //   xhr.open("GET", `${BASE_URL}/api/settings/`);
+  //   // xhr.setRequestHeader("Authorization", accessToken);
+  //   xhr.setRequestHeader("Authorization", idToken);
+  //   xhr.onreadystatechange = async function () {
+  //     if (xhr.readyState === XMLHttpRequest.DONE) {
+  //       if (xhr.status === 200) {
+  //         let settings_records = JSON.parse(xhr.responseText);
+  //         settingsDataStatus = true;
+  //         toggleSkeletonLoader("settingsForm", "remove");
+  //         for (let settings of settings_records) {
+  //           $(`#${settings.name}`).val(settings.value);
+  //           $(`#${settings.name}_text`).text(settings.value);
+  //         }
+  //       }
+  //     }
+  //   };
+  // } else {
+  //   console.log("line75");
+  //   settingsDataStatus = false;
+  // }
+  // console.log("send before")
+  // xhr.send();
+  // console.log("send after")
   
 };
 
