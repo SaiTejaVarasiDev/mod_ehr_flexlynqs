@@ -61,7 +61,7 @@ const handleSettingsClick = async () => {
     //     if (xhr.status === 200) {
     //       let settings_records = JSON.parse(xhr.responseText);
     //       settingsDataStatus = true;
-    //       toggleSkeletonLoader("settingsForm", "remove");
+          toggleSkeletonLoader("settingsForm", "remove");
     //       for (let settings of settings_records) {
     //         $(`#${settings.name}`).val(settings.value);
     //         $(`#${settings.name}_text`).text(settings.value);
