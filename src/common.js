@@ -1,6 +1,7 @@
 
 import { fetchAuthSession, signOut, } from "aws-amplify/auth";
 import { Amplify } from "aws-amplify";
+import {defineAuth, secret} from "@aws-amplify/backend"
 // export const BASE_URL = process.env.BASE_URL || window.location.origin
 // export const { REGION } = process.env;
 // export const { POOL_ID } = process.env;
@@ -13,7 +14,8 @@ export const CLIENT_ID= process.env.CLIENT_ID;
 export const IDENTITY_POOL_ID = process.env.IDENTITY_POOL_ID;
 export const REGION = process.env.REGION;
 export const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
-export const GOOGLE_MAPS_KEY = process.env.GOOGLE_MAPS_KEY
+// export const GOOGLE_MAPS_KEY = process.env.GOOGLE_MAPS_KEY
+export const GOOGLE_MAPS_KEY = secret(GOOGLE_MAPS_KEY)
 Amplify.configure({
     Auth: {
         mandatorySignIn: true,
